@@ -1,10 +1,14 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../Design files/Landing.dart';
 
-class RegisterC {
-  static void OnRegister(String fName, String lName, String email, String pass){
-    print(email + " " + pass);
-    if (GetUtils.isEmail(email) && pass.length >= 6 && fName.isNotEmpty && fName.isNotEmpty){
+class RegisterC extends GetxController {
+  TextEditingController fName = TextEditingController();
+  TextEditingController lName = TextEditingController();
+  TextEditingController email = TextEditingController();
+  TextEditingController pass = TextEditingController();
+  void OnRegister(){
+    if (GetUtils.isEmail(email.text) && pass.text.length >= 6 && fName.text.isNotEmpty && lName.text.isNotEmpty){
       Get.to(Landing());
     }
   }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '../Controller files/RegisterC.dart';
 
 class Register extends StatelessWidget {
@@ -6,10 +7,7 @@ class Register extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    TextEditingController fName = TextEditingController();
-    TextEditingController lName = TextEditingController();
-    TextEditingController email = TextEditingController();
-    TextEditingController pass = TextEditingController();
+    var c = Get.put(RegisterC());
     return Scaffold(
         appBar: AppBar(
           title: const Text("Login"),
@@ -22,33 +20,33 @@ class Register extends StatelessWidget {
             children: [
               SizedBox(height: 20),
               Text(
-                "Log in to your account",
+                "Register your account",
                 style: TextStyle(fontSize: 30),
               ),
               SizedBox(height: 60),
               TextField(
-                controller: fName,
+                controller: Get.find<RegisterC>().fName,
                 decoration: InputDecoration(
                     hintText: "Enter your first name"
                 ),
               ),
               SizedBox(height: 20),
               TextField(
-                controller: lName,
+                controller: Get.find<RegisterC>().lName,
                 decoration: InputDecoration(
                     hintText: "Enter your last name"
                 ),
               ),
               SizedBox(height: 20),
               TextField(
-                controller: email,
+                controller: Get.find<RegisterC>().email,
                 decoration: InputDecoration(
                     hintText: "Enter your email"
                 ),
               ),
               SizedBox(height: 20),
               TextField(
-                controller: pass,
+                controller: Get.find<RegisterC>().pass,
                 decoration: InputDecoration(
                     hintText: "Enter your password"
                 ),
@@ -56,7 +54,7 @@ class Register extends StatelessWidget {
               SizedBox(height: 25),
               ElevatedButton(
                   onPressed: (){
-                    RegisterC.OnRegister(fName.text, lName.text, email.text, pass.text);
+                    c.OnRegister();
                   },
                   child: Text("Log in")
               ),

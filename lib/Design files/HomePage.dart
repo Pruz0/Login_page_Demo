@@ -11,7 +11,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           title: const Text("Assignment of Login-Registration"),
-          backgroundColor: Colors.deepOrangeAccent,
+          backgroundColor: Colors.green,
           foregroundColor: Colors.white,
         ),
         body: Center(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '../Controller files/LoginC.dart';
 
 class Login extends StatelessWidget {
@@ -6,8 +7,8 @@ class Login extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    TextEditingController email = TextEditingController();
-    TextEditingController pass = TextEditingController();
+    var c = Get.put(LoginC());
+
     return Scaffold(
         appBar: AppBar(
           title: const Text("Login"),
@@ -25,14 +26,14 @@ class Login extends StatelessWidget {
               ),
               SizedBox(height: 60),
               TextField(
-                controller: email,
+                controller: Get.find<LoginC>().email,
                 decoration: InputDecoration(
                   hintText: "Enter your email"
                 ),
               ),
               SizedBox(height: 20),
               TextField(
-                controller: pass,
+                controller: Get.find<LoginC>().pass,
                 decoration: InputDecoration(
                     hintText: "Enter your password"
                 ),
@@ -40,7 +41,7 @@ class Login extends StatelessWidget {
               SizedBox(height: 25),
               ElevatedButton(
                   onPressed: (){
-                    LoginC.OnLogin(email.text, pass.text);
+                    c.OnLogin();
                   }, 
                   child: Text("Log in")
               ),
